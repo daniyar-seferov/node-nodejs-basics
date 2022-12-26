@@ -1,11 +1,11 @@
 import {stat, rename as renamePromise} from 'fs/promises';
 
-const rename = async () => {
-	const sourceFile = `${process.cwd()}/src/fs/files/wrongFilename.txt`;
-	const destinationFile = `${process.cwd()}/src/fs/files/properFilename.md`;
-	const errorMessage = 'FS operation failed';
-	const errorCodes = ['EEXIST', 'ENOENT'];
+const sourceFile = `${process.cwd()}/src/fs/files/wrongFilename.txt`;
+const destinationFile = `${process.cwd()}/src/fs/files/properFilename.md`;
+const errorMessage = 'FS operation failed';
+const errorCodes = ['EEXIST', 'ENOENT'];
 
+const rename = async () => {
 	try {
 		const fileExists = !!(await stat(destinationFile).catch(e => false));
 

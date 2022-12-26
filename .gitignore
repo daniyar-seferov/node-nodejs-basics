@@ -2,3 +2,4 @@ node_modules
 
 # PhpStorm files
 .idea/
+.DS_Store

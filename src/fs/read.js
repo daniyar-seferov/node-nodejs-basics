@@ -1,23 +1,17 @@
-import { open } from "fs/promises";
+import { readFile } from "fs/promises";
+
+const sourceFile = `${process.cwd()}/src/fs/files/fileToRead.txt`;
+const errorMessage = 'FS operation failed';
 
 const read = async () => {
-	const sourceFile = `${process.cwd()}/src/fs/files/fileToRead.txt`;
-	const errorMessage = 'FS operation failed';
-	let filehandle = null;
-
 	try {
-		filehandle = await open(sourceFile);
-
-		for await (const line of filehandle.readLines()) {
-			console.log(line);
-		}
+		const content = await readFile(sourceFile, 'utf8');
+		console.log(content);
 	} catch (err) {
 		if (err.code === 'ENOENT') {
 			throw new Error(errorMessage);
 		}
 		throw err;
-	} finally {
-		await filehandle?.close();
 	}
 };
 

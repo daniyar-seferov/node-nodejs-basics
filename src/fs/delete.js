@@ -1,9 +1,9 @@
 import { rm } from 'fs/promises';
 
-const remove = async () => {
-	const sourceFile = `${process.cwd()}/src/fs/files/fileToRemove.txt`;
-	const errorMessage = 'FS operation failed';
+const sourceFile = `${process.cwd()}/src/fs/files/fileToRemove.txt`;
+const errorMessage = 'FS operation failed';
 
+const remove = async () => {
 	try {
 		await rm(sourceFile);
 	} catch (err) {
